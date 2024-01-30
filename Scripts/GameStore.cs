@@ -9,7 +9,7 @@ public class GameStore
 {
     public Dictionary<string, List<Sprite>> sprites;
     public float timeAcceleration = 1f;
-    private List<string> foldersSprite=new List<string>() { "roads","backgrounds" };
+    private List<string> foldersSprite=new List<string>() { "Road", "Background", "el1bg", "el2bg" };
     public static GameStore Instance;
 
     public static GameStore getInstance()

@@ -8,6 +8,36 @@ public class TimerMoved : MonoBehaviour
     {
         StartCoroutine(RoadMove());
         StartCoroutine(BackgroundMove());
+        StartCoroutine(El1BackgroundMove());
+        StartCoroutine(El2BackgroundMove());
+    }
+
+
+    IEnumerator El2BackgroundMove()
+    {
+        while (true)
+        {
+            GameObject[] elbgObjects = GameObject.FindGameObjectsWithTag("el2bg");
+            foreach (GameObject elbackground in elbgObjects)
+            {
+                GameElementsController scriptelbackground = elbackground.GetComponent<GameElementsController>();
+                scriptelbackground.Move();
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    IEnumerator El1BackgroundMove()
+    {
+        while (true)
+        {
+            GameObject[] elbgObjects = GameObject.FindGameObjectsWithTag("el1bg");
+            foreach (GameObject elbackground in elbgObjects)
+            {
+                GameElementsController scriptelbackground = elbackground.GetComponent<GameElementsController>();
+                scriptelbackground.Move();
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator BackgroundMove()
