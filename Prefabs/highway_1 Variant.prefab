@@ -93,8 +93,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 869513168158187380, guid: 6d05ac32f0a75dd4a8d53bb2abd938c2, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 869513168158187380, guid: 6d05ac32f0a75dd4a8d53bb2abd938c2, type: 3}
       propertyPath: speedRoad
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597941417011503753, guid: 6d05ac32f0a75dd4a8d53bb2abd938c2, type: 3}
+      propertyPath: m_Size.y
+      value: 4.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597941417011503753, guid: 6d05ac32f0a75dd4a8d53bb2abd938c2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.22
       objectReference: {fileID: 0}
     - target: {fileID: 4644978499195887238, guid: 6d05ac32f0a75dd4a8d53bb2abd938c2, type: 3}
       propertyPath: m_RootOrder
