@@ -9,6 +9,7 @@ TagManager:
   - el1bg
   - el2bg
   - movePlace
+  - PlayerBound
   layers:
   - Default
   - TransparentFX
