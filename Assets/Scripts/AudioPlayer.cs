@@ -9,7 +9,7 @@ public class AudioPlayer
 {
     private List<AudioClip> audioFiles;
     private int playedAudio=-1;
-     private string audioFolderPath;
+    private string audioFolderPath;
 
     [SerializeField] protected AudioSource BoomBox;
 
@@ -65,6 +65,20 @@ public class AudioPlayer
         if (playedAudio - 1 < 0) playedAudio = audioFiles.Count-1;
         else playedAudio--;
         this.PlayByID(playedAudio);
+    }
+
+    public void Pause()
+    {
+        if (isPlaying())
+        {
+            BoomBox.Pause();
+        } else if(playedAudio != -1)
+        {
+            BoomBox.Play();
+        } else
+        {
+            PlayByID(0);
+        }
     }
 
     public void PlayByID(int id)
