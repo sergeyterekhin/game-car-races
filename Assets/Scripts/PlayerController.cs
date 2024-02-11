@@ -29,23 +29,30 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        if (Vector2.zero != movement) this.ChangeSpeedPlayer(movement);
+        if (Input.GetAxisRaw("Space") != 0f)
+        {
+            rb.AddForce(new Vector2(0, Input.GetAxisRaw("Space") * speed * 10f));
+        } 
+        else {
+            rb.AddForce(new Vector2(0, -1 * speed * 10f));
+        }
+        //Vector2 movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+        //if (Vector2.zero != movement) this.ChangeSpeedPlayer(movement);
     }
    
 
-    private void ChangeSpeedPlayer(Vector2 movement)
-    {
-        if (rb.velocity.x > 0f && movement.x < 0f) movement.x = movement.x - 2f;
-        else if (rb.velocity.x < 0f && movement.x > 0f) movement.x = movement.x + 2f;
+    //private void ChangeSpeedPlayer(Vector2 movement)
+    //{
+    //    if (rb.velocity.x > 0f && movement.x < 0f) movement.x = movement.x - 2f;
+    //    else if (rb.velocity.x < 0f && movement.x > 0f) movement.x = movement.x + 2f;
 
-        if ((rb.velocity.x >= this.maxVelocity && movement.x >= 0f)
-            || (rb.velocity.x <= this.minVelocity && movement.x <= 0f)
-            || (movement.x < 0 && !canDriveBack))
-        { 
-            movement.x = 0f; 
-        }
+    //    if ((rb.velocity.x >= this.maxVelocity && movement.x >= 0f)
+    //        || (rb.velocity.x <= this.minVelocity && movement.x <= 0f)
+    //        || (movement.x < 0 && !canDriveBack))
+    //    { 
+    //        movement.x = 0f; 
+    //    }
         
-        rb.AddForce(new Vector2(movement.x * speed * 10f, movement.y * speed * 10f));
-    }
+    //    rb.AddForce(new Vector2(movement.x * speed * 10f, movement.y * speed * 10f));
+    //}
 }

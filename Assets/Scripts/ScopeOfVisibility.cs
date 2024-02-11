@@ -18,18 +18,18 @@ public class ScopeOfVisibility : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "PlayerBound")
-        {
-            var mainPlayer = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
-            if(!mainPlayer.CanDriveBack) mainPlayer.CanDriveBack=true;
-        }
-    }
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "PlayerBound")
+    //    {
+    //        var mainPlayer = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+    //        if(!mainPlayer.CanDriveBack) mainPlayer.CanDriveBack=true;
+    //    }
+    //}
 
-    private void FixedUpdate()
-    {
-        if (this.transform.position.x + 0.2f < mainCamera.transform.position.x)
-        this.transform.position = new Vector3(mainCamera.transform.position.x-0.2f, this.transform.position.y, this.transform.position.z);
-    }
+    //private void FixedUpdate()
+    //{
+    //    if (this.transform.position.x + 0.2f < mainCamera.transform.position.x)
+    //        this.transform.position = new Vector3(mainCamera.transform.position.x - 0.2f, this.transform.position.y, this.transform.position.z);
+    //}
 }

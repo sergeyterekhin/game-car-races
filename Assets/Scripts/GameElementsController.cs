@@ -5,12 +5,6 @@ using UnityEngine;
 public class GameElementsController: MonoBehaviour
 {
     public float speed;
-    private float timeDelta;
-
-    private void Start()
-    {
-        timeDelta = GameStore.Instance.timeAcceleration;
-    }
 
     public void Move()
     {
@@ -18,7 +12,7 @@ public class GameElementsController: MonoBehaviour
         this.transform.position = Vector3.MoveTowards(
             this.transform.position,
             newTransform,
-            5*speed * Time.deltaTime);
+            5*(speed+ GameStore.getInstance().timeAcceleration) * Time.deltaTime);
     }
 
 }
