@@ -11,8 +11,8 @@ public class CarStereo : MonoBehaviour
     [SerializeField] private Text UiText;
     [SerializeField] private float speedText;
     private DigitalText DisplayText;
-    private float actionMusic = 0;
-    private float turnMusic = 0;
+    private float actionMusic = 0f;
+    private float turnMusic = 0f;
     private Coroutine displayUiText;
     void Start()
     {
@@ -27,7 +27,7 @@ public class CarStereo : MonoBehaviour
 
     private void PressButtons()
     {
-        if (Input.GetAxisRaw("Music") != 0)
+        if (Input.GetAxisRaw("Music") != 0f)
         {
             actionMusic = Input.GetAxisRaw("Music");
         }
@@ -41,7 +41,7 @@ public class CarStereo : MonoBehaviour
             actionMusic = 0f;
         }
 
-        if (Input.GetAxisRaw("TurnMusic") != 0)
+        if (Input.GetAxisRaw("TurnMusic") != 0f)
         {
             turnMusic = Input.GetAxisRaw("TurnMusic");
         }
