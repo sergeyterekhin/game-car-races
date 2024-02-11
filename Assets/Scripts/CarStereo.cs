@@ -56,9 +56,9 @@ public class CarStereo : MonoBehaviour
             }
             else
             {
-                DisplayText.Text = MusicPlayer.PlayedAudio;
-                if (displayUiText == null) StartCoroutine(showUiText());
                 MusicPlayer.Pause();
+                DisplayText.Text = MusicPlayer.PlayedAudio;
+                StartCoroutine(showUiText());
             }
             turnMusic = 0f;
         }
