@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,8 @@ public class CarStereo : MonoBehaviour
     [SerializeField] private Text UiText;
     [SerializeField] private float speedText;
     private DigitalText DisplayText;
-    private float actionMusic=0;
+    private float actionMusic = 0;
+    private float turnMusic = 0;
     private Coroutine displayUiText;
     void Start()
     {
@@ -21,7 +23,6 @@ public class CarStereo : MonoBehaviour
     void Update()
     {
         PressButtons();
-              
     }
 
     private void PressButtons()
@@ -39,6 +40,30 @@ public class CarStereo : MonoBehaviour
             displayUiText = StartCoroutine(showUiText());
             actionMusic = 0f;
         }
+
+        if (Input.GetAxisRaw("TurnMusic") != 0)
+        {
+            turnMusic = Input.GetAxisRaw("TurnMusic");
+        }
+        else if (turnMusic != 0f)
+        {
+            if (displayUiText != null) StopCoroutine(displayUiText);
+
+            if (MusicPlayer.isPlaying())
+            {
+                DisplayText.Text = "PAUSE";
+                MusicPlayer.Pause();
+            }
+            else
+            {
+                DisplayText.Text = MusicPlayer.PlayedAudio;
+                if (displayUiText == null) StartCoroutine(showUiText());
+                MusicPlayer.Pause();
+            }
+            turnMusic = 0f;
+        }
+
+
     }
 
     IEnumerator showUiText()
