@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Linq;
 
 public class GameStore
@@ -12,7 +9,6 @@ public class GameStore
     public float timeAcceleration = 0f;
     private string theme = null;
     private List<string> foldersSprite;
-    private List<string> elementsFoldersSprite=new List<string>() { "Road", "Background", "el1bg", "el2bg" };
     private static GameStore Instance;
     public string Theme
     {
@@ -38,7 +34,7 @@ public class GameStore
         foreach (string folderTheme in this.foldersSprite)
         {
             var themeEl = new Dictionary<string, List<Sprite>>();
-            foreach (string folderElem in this.elementsFoldersSprite)
+            foreach (string folderElem in new string[]{ "Road", "Background", "el1bg", "el2bg" })
             {
                 string[] files = Directory.GetFiles(Application.dataPath + "/Sprites/Theme/"+folderTheme +"/"+folderElem+"/", "*.png");
                 var list = new List<Sprite>();

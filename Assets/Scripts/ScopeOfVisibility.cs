@@ -7,7 +7,6 @@ using System.Linq;
 public class ScopeOfVisibility : MonoBehaviour
 {
     private string[] relocatedObject = new string[] { "Road", "Background", "el1bg", "el2bg" };
-    [SerializeField] private GameObject mainCamera;
     void OnTriggerExit2D(Collider2D collision)
     {
         if (relocatedObject.Contains(collision.tag)) ElementCreator.Relocate(collision.gameObject, collision.tag);
@@ -23,7 +22,7 @@ public class ScopeOfVisibility : MonoBehaviour
     //    if (collision.tag == "PlayerBound")
     //    {
     //        var mainPlayer = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
-    //        if(!mainPlayer.CanDriveBack) mainPlayer.CanDriveBack=true;
+    //        if(!mainPlayer.CanDriveBack) mainPlayer.CanDriveBack=true; 
     //    }
     //}
 
