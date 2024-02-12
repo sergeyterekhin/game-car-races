@@ -30,8 +30,8 @@ public class ElementCreator
         var render = gObject.GetComponent<SpriteRenderer>();
         oldPos.transform.position = new Vector3(oldPos.position.x + render.bounds.size.x * 2, oldPos.position.y);
         if (FolderSprite.Length>0) { 
-        var index = Random.Range(0, GameStore.getInstance().sprites[GameStore.getInstance().theme][FolderSprite].Count);
-        render.sprite = GameStore.getInstance().sprites[GameStore.getInstance().theme][FolderSprite][index];
+        var index = Random.Range(0, GameStore.getInstance().sprites[GameStore.getInstance().Theme][FolderSprite].Count);
+        render.sprite = GameStore.getInstance().sprites[GameStore.getInstance().Theme][FolderSprite][index];
         }
     }
 }

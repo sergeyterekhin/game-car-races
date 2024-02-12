@@ -4,17 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameStore
 {
     public Dictionary<string, Dictionary<string, List<Sprite>>> sprites;
     public float timeAcceleration = 0f;
-    public string theme = "pinkSunset";
-
+    private string theme = null;
     private List<string> foldersSprite;
     private List<string> elementsFoldersSprite=new List<string>() { "Road", "Background", "el1bg", "el2bg" };
     private static GameStore Instance;
-    
+    public string Theme
+    {
+        get { return theme; }
+        set { this.theme = this.sprites.ContainsKey(value) ? value : this.sprites.ElementAt(0).Key; }
+    }
     public void InitSprites(List<string> theme)
     {
      this.foldersSprite = theme;

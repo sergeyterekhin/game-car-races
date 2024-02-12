@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private List<string> SpriteThemeFolderName;
-
+    [SerializeField] private string startTheme;
     void Awake()
     {
         GameStore.getInstance().InitSprites(SpriteThemeFolderName);
+        GameStore.getInstance().Theme = startTheme;
         StartCoroutine(ChangleGlobalSpeed());
     }
 
