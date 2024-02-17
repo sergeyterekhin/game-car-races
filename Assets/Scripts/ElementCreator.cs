@@ -17,8 +17,20 @@ public class ElementCreator
 
     public static void ChangeSprite(SpriteRenderer sprite, string elementName)
     {
-        var index = Random.Range(0, GameStore.getInstance().sprites[GameStore.getInstance().Theme][elementName].Count);
-        sprite.sprite = GameStore.getInstance().sprites[GameStore.getInstance().Theme][elementName][index];
+        sprite.sprite = GameStore.getInstance().Theme.GetSpriteRandom(elementName);
+    }
+
+    public static void ChangeAllSprites()
+    {
+        foreach(string tagName in GameStore.getInstance().Theme.ThemeElements)
+        {
+            GameObject[] elementsGame = GameObject.FindGameObjectsWithTag(tagName);
+            foreach (GameObject element in elementsGame)
+            {
+                SpriteRenderer sprite = element.GetComponent<SpriteRenderer>();
+                ChangeSprite(sprite,tagName);
+            }
+        }
     }
    
 }
