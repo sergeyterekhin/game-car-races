@@ -10,6 +10,8 @@ TagManager:
   - el2bg
   - movePlace
   - PlayerBound
+  - Tunnel
+  - TunnelArea
   layers:
   - Default
   - TransparentFX

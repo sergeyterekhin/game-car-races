@@ -22,13 +22,12 @@ public class GameManager : MonoBehaviour
         ElementCreator.ChangeAllSprites();
     }
 
-    IEnumerator ChangleGlobalSpeed()
+    private IEnumerator ChangleGlobalSpeed()
     {
         while (GameStore.getInstance().timeAcceleration < 4f)
         {
             yield return new WaitForSeconds(30);
             GameStore.getInstance().timeAcceleration=GameStore.getInstance().timeAcceleration+0.25f;
-            ChangeTheme();
         }
     }
 }
