@@ -11,9 +11,12 @@ public class TunnelController : GameElementsController
         StartCoroutine(StartTunel());
     }
 
+    public override void Update() {}
+
     IEnumerator StartTunel()
     {
-        while (true) { 
+        while (true)
+        {
             if (tunnelActive)
             {
                 yield return new WaitForEndOfFrame();

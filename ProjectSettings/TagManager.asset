@@ -12,6 +12,7 @@ TagManager:
   - PlayerBound
   - Tunnel
   - TunnelArea
+  - Enemy
   layers:
   - Default
   - TransparentFX

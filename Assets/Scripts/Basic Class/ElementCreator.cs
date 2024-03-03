@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementCreator
+public class ElementCreator: Object
 {
     public static void Relocate(GameObject gObject, string FolderSprite="")
     {
@@ -13,6 +13,28 @@ public class ElementCreator
         if (FolderSprite.Length>0) {
             ChangeSprite(render,FolderSprite);
         }
+    }
+
+    public static GameObject[] CreatePool(int elementsCount,List<GameObject> gObjects)
+    {
+        GameObject[] pool = new GameObject[elementsCount];
+        for (int i=0; i<elementsCount; i++)
+        {
+            GameObject timeObject = gObjects[Random.Range(0, gObjects.Count)];
+            pool[i] = Instantiate(timeObject);
+            pool[i].SetActive(false);
+        }
+        return pool;
+    }
+    
+    public static GameObject getPoolObject(GameObject[] pool)
+    {
+        GameObject result = null;
+        foreach(GameObject element in pool)
+        {
+            if (!element.activeSelf) result = element;
+        }
+        return result;
     }
 
     public static void ChangeSprite(SpriteRenderer sprite, string elementName)

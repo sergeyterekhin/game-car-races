@@ -6,7 +6,12 @@ public class GameElementsController: MonoBehaviour
 {
     public float speed;
 
-    public void Move()
+    public virtual void Update()
+    {
+        this.Move();
+    }
+
+    public virtual void Move()
     {
         var newTransform = new Vector3(this.transform.position.x-1f, this.transform.position.y);
         this.transform.position = Vector3.MoveTowards(
