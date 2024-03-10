@@ -33,6 +33,7 @@ public class CarEnemyController : GameElementsController, IPoolObject
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag == "Enemy") Debug.Log("враг в овраге");
         if (collision.tag == "Player") Debug.Log("ударился");
     }
 }

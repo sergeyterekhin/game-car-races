@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8241704027187042512}
   - component: {fileID: 8241704027187042514}
   - component: {fileID: -198902772158050577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: police-car
   m_TagString: Enemy
   m_Icon: {fileID: 0}
