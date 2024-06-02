@@ -8,7 +8,7 @@ public class GameElementsController: MonoBehaviour
 
     public virtual void Update()
     {
-        this.Move();
+        if(GameStore.getInstance().stateMainPlayer!=GameState.Died) this.Move();
     }
 
     public virtual void Move()

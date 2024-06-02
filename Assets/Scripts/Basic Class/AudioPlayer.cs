@@ -5,6 +5,7 @@ using System.IO;
 using UnityEditor;
 
 [System.Serializable]
+
 public class AudioPlayer
 {
     private List<AudioClip> audioFiles;
@@ -48,9 +49,18 @@ public class AudioPlayer
         }
     }
 
+
+    // я не знаю как написать собственное событие если кончился звук без класса MonoBehaivour
+    // поэтому все танцы с бубном пусть реализует другой объект
     public bool isPlaying()
     {
         return BoomBox.isPlaying;
+    }
+
+    public void PlayRandom()
+    {
+       int randomIndexAudio = Random.Range(0, this.audioFiles.Count);
+       PlayByID(randomIndexAudio);
     }
 
     public void PlayNext()

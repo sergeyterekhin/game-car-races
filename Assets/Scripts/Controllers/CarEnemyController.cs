@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class CarEnemyController : GameElementsController, IPoolObject
 {
-    private bool isEnabled;
-    void Start()
+
+    public void Start()
     {
-        isEnabled = false;
+        EventManager.MainPlayerDied += ChangeGameRules;
     }
 
-    public override void Update()
+    public void ChangeGameRules()
     {
-        if (!isEnabled) this.Move();
-        else this.MoveRoad();
-    }
-
-    public void MoveRoad()
-    {
-        
+        this.speed = -2 * this.speed;
     }
 
     public void DestroyPool()
@@ -31,9 +25,19 @@ public class CarEnemyController : GameElementsController, IPoolObject
         this.gameObject.SetActive(true);
     }
 
+    void TakeDamage(GameObject Gobject,float value)
+    {
+        Gobject.GetComponent<IDamageable>()?.Damage(value);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy") Debug.Log("враг в овраге");
-        if (collision.tag == "Player") Debug.Log("ударился");
+        if (collision.tag == "Player") TakeDamage(collision.gameObject,100f);
+        //if (collision.tag == "Player") Debug.Log("ударился");
+    }
+
+    public override void Update()
+    {
+        this.Move();
     }
 }

@@ -2,57 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
 {
     [SerializeField] private float speed;
-    [SerializeField] private float maxVelocity;
-    [SerializeField] private float minVelocity;
+    [SerializeField] private float health;
+    [SerializeField] private bool godMode;
+    private Animator animationPlayer;
+    private List<Coroutine> ActiveBonusesTimer;
     private Rigidbody2D rb;
-    private bool canDriveBack;
 
-    public bool CanDriveBack 
+    public void Die() {
+        animationPlayer.SetBool("isDied", true);
+        rb.bodyType = RigidbodyType2D.Static;
+        EventManager.OnPlayerDie();
+    }
+
+    public void Damage(float value)
     {
-        get {
-            return canDriveBack;
-        }
-        set {
-            rb.velocity = new Vector2(0, 0);
-            canDriveBack = value;
-        }
+        health -= value;
+        if (this.health <= 0f) Die();
+    }
+
+    public void SetBonus(IEnumerator action)
+    {
+        Coroutine newCoroutine = StartCoroutine(action);
+        ActiveBonusesTimer.Add(newCoroutine);
     }
 
     void Start()
     {
         this.rb = this.GetComponent<Rigidbody2D>();
-        this.canDriveBack = true;
+        this.animationPlayer = this.GetComponent<Animator>();
+        this.ActiveBonusesTimer = new();
     }
 
     void FixedUpdate()
     {
-        if (Input.GetAxisRaw("Space") != 0f)
-        {
-            rb.AddForce(new Vector2(0, Input.GetAxisRaw("Space") * speed * 10f));
-        } 
-        else {
-            rb.AddForce(new Vector2(0, -1 * speed * 10f));
-        }
-        //Vector2 movement = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        //if (Vector2.zero != movement) this.ChangeSpeedPlayer(movement);
+        if (Input.GetAxisRaw("Space") != 0f) rb.AddForce(new Vector2(0, Input.GetAxisRaw("Space") * speed * 10f));
+        else rb.AddForce(new Vector2(0, -1 * speed * 10f));
     }
-   
-
-    //private void ChangeSpeedPlayer(Vector2 movement)
-    //{
-    //    if (rb.velocity.x > 0f && movement.x < 0f) movement.x = movement.x - 2f;
-    //    else if (rb.velocity.x < 0f && movement.x > 0f) movement.x = movement.x + 2f;
-
-    //    if ((rb.velocity.x >= this.maxVelocity && movement.x >= 0f)
-    //        || (rb.velocity.x <= this.minVelocity && movement.x <= 0f)
-    //        || (movement.x < 0 && !canDriveBack))
-    //    { 
-    //        movement.x = 0f; 
-    //    }
-        
-    //    rb.AddForce(new Vector2(movement.x * speed * 10f, movement.y * speed * 10f));
-    //}
 }

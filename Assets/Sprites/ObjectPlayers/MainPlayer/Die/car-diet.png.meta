@@ -1,0 +1,378 @@
+fileFormatVersion: 2
+guid: adcc962d36ca5c44fb50fae5e2ba5daf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: car-diet_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 0
+        width: 169
+        height: 84
+      alignment: 9
+      pivot: {x: 0.48816568, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12629bd8c81749448954c1cf4cd887f4
+      internalID: 1744282613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_2
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 0
+        width: 167
+        height: 84
+      alignment: 9
+      pivot: {x: 0.48203593, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b38b6684403f6d46869129553bf5b74
+      internalID: -1844972529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_3
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 0
+        width: 162
+        height: 84
+      alignment: 9
+      pivot: {x: 0.46604937, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a695185bd136bc49bddba5eb7c93279
+      internalID: -1078363329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_4
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 0
+        width: 159
+        height: 84
+      alignment: 9
+      pivot: {x: 0.45597485, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99216e1c90316724ab1827152217a9f2
+      internalID: -851175668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_5
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 0
+        width: 160
+        height: 84
+      alignment: 9
+      pivot: {x: 0.459375, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce566b41cdef7c64e9f700f6a97a9fd7
+      internalID: -1591983684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_6
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 0
+        width: 173
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70340dafd71593f4aa3966194f962c80
+      internalID: -305639424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_7
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 173
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.36309522}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c164f3e933fa594478a22d7ce0410d1f
+      internalID: 1052750794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_8
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 0
+        width: 173
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37195122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 201d2f02e0e21a640986a7ef1f46d4c5
+      internalID: -1494050187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_9
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 0
+        width: 173
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37195122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a66dc0f450c9fa43b07712818f60642
+      internalID: 1469275670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_10
+      rect:
+        serializedVersion: 2
+        x: 1833
+        y: 0
+        width: 173
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37195122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1fde476c0fcc944ac8d155334b7afe
+      internalID: -1662469881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: car-diet_11
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 0
+        width: 173
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.37195122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdaf44cae80a6cc42acea8f469e40e8e
+      internalID: 199223753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      car-diet_0: -169895308
+      car-diet_1: 1744282613
+      car-diet_10: -1662469881
+      car-diet_11: 199223753
+      car-diet_2: -1844972529
+      car-diet_3: -1078363329
+      car-diet_4: -851175668
+      car-diet_5: -1591983684
+      car-diet_6: -305639424
+      car-diet_7: 1052750794
+      car-diet_8: -1494050187
+      car-diet_9: 1469275670
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,6 +13,7 @@ TagManager:
   - Tunnel
   - TunnelArea
   - Enemy
+  - Bonus
   layers:
   - Default
   - TransparentFX

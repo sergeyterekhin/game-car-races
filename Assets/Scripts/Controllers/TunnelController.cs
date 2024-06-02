@@ -8,10 +8,22 @@ public class TunnelController : GameElementsController
     void Start()
     {
         tunnelActive = false;
-        StartCoroutine(StartTunel());
+        EventManager.MainPlayerDied += OffTunnel;
+        this.OnTunnel();
     }
 
     public override void Update() {}
+
+    protected void OffTunnel()
+    {
+        StopAllCoroutines();
+    }
+
+    protected void OnTunnel()
+    {
+        StartCoroutine(StartTunel());
+    }
+
 
     IEnumerator StartTunel()
     {
