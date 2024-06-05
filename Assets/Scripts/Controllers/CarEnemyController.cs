@@ -7,12 +7,13 @@ public class CarEnemyController : GameElementsController, IPoolObject
 
     public void Start()
     {
+        if (GameStore.getInstance().stateMainPlayer == GameState.Died) this.speed = -4f * this.speed;
         EventManager.MainPlayerDied += ChangeGameRules;
     }
 
     public void ChangeGameRules()
     {
-        this.speed = -2 * this.speed;
+        this.speed = -4 * this.speed;
     }
 
     public void DestroyPool()

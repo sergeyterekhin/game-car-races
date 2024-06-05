@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
@@ -13,6 +14,10 @@ public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
 
     public void Die() {
         animationPlayer.SetBool("isDied", true);
+        
+        ParticleSystem smokeEffect = gameObject.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(psEl=>psEl.name=="effectDie");
+        smokeEffect?.Play();
+        
         rb.bodyType = RigidbodyType2D.Static;
         EventManager.OnPlayerDie();
     }

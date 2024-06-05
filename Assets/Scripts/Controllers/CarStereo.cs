@@ -25,6 +25,12 @@ public class CarStereo : MonoBehaviour
     void Update()
     {
         PressButtons();
+        MusicEnd();
+    }
+
+    protected void MusicEnd()
+    {
+        if (MusicPlayer.StatusAudio == AudioStatus.END) Play();
     }
 
     public void Play(string type="random")
@@ -43,11 +49,13 @@ public class CarStereo : MonoBehaviour
                 break;
 
             case "pause":
+                Debug.Log("pause");
                 if (MusicPlayer.isPlaying())
                 {
-                    //DisplayText.Text = "PAUSE";
-                    UiText.text = "PAUSE";
+                    DisplayText.Text = "PAUSE";
                     MusicPlayer.Pause();
+                    displayUiText = StartCoroutine(showUiText());
+                    return;
                 }
                 else
                 {
@@ -68,11 +76,10 @@ public class CarStereo : MonoBehaviour
     {
         var actionMusic = Input.GetAxis("Music");
         var turnMusic = Input.GetAxis("TurnMusic");
-
-        if (onTouchButton && (actionMusic != 0f) || (turnMusic!=0f) ) return;
+        if (onTouchButton && (actionMusic != 0f || turnMusic != 0f)) return;
         else if (actionMusic != 0f) Play(actionMusic > 0f ? "next" : "back");
         else if (turnMusic != 0f) Play("pause");
-        else onTouchButton = false; 
+        else onTouchButton = false;
 
         //if (Input.GetAxisRaw("Music") != 0f)
         //{

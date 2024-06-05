@@ -4,14 +4,15 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
-[System.Serializable]
+public enum AudioStatus { OFF, PLAY, PAUSE, END }
 
+[System.Serializable]
 public class AudioPlayer
 {
     private List<AudioClip> audioFiles;
     private int playedAudio=-1;
     private string audioFolderPath;
-
+    private AudioStatus statusAudio =AudioStatus.OFF;
     [SerializeField] protected AudioSource BoomBox;
 
     public string PlayedAudio
@@ -19,6 +20,15 @@ public class AudioPlayer
         get
         {
             if (playedAudio == -1) return "OFF"; else return audioFiles[playedAudio].name;
+        }
+    }
+
+    public AudioStatus StatusAudio
+    {
+        get
+        {
+            if (statusAudio == AudioStatus.PLAY && isPlaying() == false) statusAudio = AudioStatus.END;
+            return statusAudio;
         }
     }
 
@@ -82,10 +92,14 @@ public class AudioPlayer
         if (isPlaying())
         {
             BoomBox.Pause();
-        } else if(playedAudio != -1)
+            this.statusAudio = AudioStatus.PAUSE;
+        } 
+        else if(playedAudio != -1)
         {
             BoomBox.Play();
-        } else
+            this.statusAudio = AudioStatus.PLAY;
+        } 
+        else
         {
             PlayByID(0);
         }
@@ -99,6 +113,7 @@ public class AudioPlayer
             BoomBox.clip = audioFiles[id];
             playedAudio = id;
             BoomBox.Play();
+            this.statusAudio = AudioStatus.PLAY;
         }
     }
 
