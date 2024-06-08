@@ -24,7 +24,7 @@ public class CarStereo : MonoBehaviour
 
     void Update()
     {
-        PressButtons();
+        if (GameStore.getInstance().stateMainPlayer==GameState.Life) PressButtons();
         MusicEnd();
     }
 

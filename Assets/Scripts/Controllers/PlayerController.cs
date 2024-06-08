@@ -3,23 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class SoundEffectsCar
+{
+    public AudioClip die;
+    public AudioClip drive;
+}
+
+[System.Serializable]
+public class ParticlesEffectsCar
+{
+    public ParticleSystem crash;
+    public ParticleSystem smokeEngine;
+}
+
 public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
 {
     [SerializeField] private float speed;
     [SerializeField] private float health;
     [SerializeField] private bool godMode;
+    [SerializeField] private SoundEffectsCar sound;
+    [SerializeField] private ParticlesEffectsCar effects;
+
     private Animator animationPlayer;
     private List<Coroutine> ActiveBonusesTimer;
     private Rigidbody2D rb;
+    private AudioSource soundSourse;
 
     public void Die() {
+        effects.crash.Play();
         animationPlayer.SetBool("isDied", true);
-        
-        ParticleSystem smokeEffect = gameObject.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(psEl=>psEl.name=="effectDie");
-        smokeEffect?.Play();
+        //ParticleSystem smokeEffect = gameObject.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(psEl=>psEl.name=="effectDie");
+        effects.smokeEngine.Play();
+
+        soundSourse.loop = false;
+        soundSourse.clip = sound.die;
+        soundSourse.Play();
         
         rb.bodyType = RigidbodyType2D.Static;
+        
         EventManager.OnPlayerDie();
+    }
+
+    private void initializePlayer()
+    {
+        soundSourse.loop = true;
+        soundSourse.clip = sound.drive;
+        soundSourse.Play();
+        animationPlayer.SetBool("isDied",false);
     }
 
     public void Damage(float value)
@@ -38,7 +69,9 @@ public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.animationPlayer = this.GetComponent<Animator>();
+        this.soundSourse = this.GetComponent<AudioSource>();
         this.ActiveBonusesTimer = new();
+        this.initializePlayer();
     }
 
     void FixedUpdate()
