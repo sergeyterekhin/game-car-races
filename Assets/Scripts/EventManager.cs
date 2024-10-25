@@ -5,11 +5,21 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    public static event Action MainPlayerDied;
+    public static event Action GameOver;
+    public static event Action RestartGame;
 
-    public static void OnPlayerDie()
+
+    public static void onGameOver()
     {
         GameStore.getInstance().stateMainPlayer = GameState.Died;
-        MainPlayerDied?.Invoke();
+        GameOver?.Invoke();
+    }
+
+    public static void onRestartGame()
+    {
+        GameStore.getInstance().timeAcceleration = 0f;
+        GameStore.getInstance().stateMainPlayer = GameState.Life;
+        GameManager.ChangeTheme();
+        RestartGame?.Invoke();
     }
 }

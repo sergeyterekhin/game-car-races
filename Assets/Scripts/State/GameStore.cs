@@ -11,7 +11,6 @@ public class GameStore
     private static GameStore Instance;    
     public Theme Theme = new();
     public float timeAcceleration = 0f;
-    public GameObject DieScreen;
     public GameState stateMainPlayer;
 
     public static GameStore getInstance()

@@ -7,8 +7,8 @@ public class TunnelController : GameElementsController
     [HideInInspector] public bool tunnelActive;
     void Start()
     {
-        tunnelActive = false;
-        EventManager.MainPlayerDied += OffTunnel;
+        EventManager.GameOver += OffTunnel;
+        EventManager.RestartGame += OnTunnel;
         this.OnTunnel();
     }
 
@@ -21,6 +21,7 @@ public class TunnelController : GameElementsController
 
     protected void OnTunnel()
     {
+        tunnelActive = false;
         StartCoroutine(StartTunel());
     }
 

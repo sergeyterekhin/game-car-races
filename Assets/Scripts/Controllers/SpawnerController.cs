@@ -19,7 +19,19 @@ public class SpawnerController : MonoBehaviour
         spawnRadius = this.GetComponent<CircleCollider2D>().radius;
         centerPivot = this.transform.position;
         poolObject = ElementCreator.CreatePool(poolLength, enemyList);
+        this.Initialize();
+        EventManager.GameOver += GameOver;
+        EventManager.RestartGame += Initialize;
+    }
+
+    private void Initialize()
+    {
         StartCoroutine(CreateObjects());
+    }
+
+    private void GameOver()
+    {
+        StopAllCoroutines();
     }
 
     protected bool HasObjectsInArea(GameObject SpawnObj)

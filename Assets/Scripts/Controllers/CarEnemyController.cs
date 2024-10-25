@@ -5,15 +5,23 @@ using UnityEngine;
 public class CarEnemyController : GameElementsController, IPoolObject
 {
 
+    private float defaultSpeed;
+
     public void Start()
     {
-        if (GameStore.getInstance().stateMainPlayer == GameState.Died) this.speed = -4f * this.speed;
-        EventManager.MainPlayerDied += ChangeGameRules;
+        defaultSpeed = this.speed;
+        EventManager.GameOver += GameOver;
+        EventManager.RestartGame += Initialize;
     }
 
-    public void ChangeGameRules()
+    public void GameOver()
     {
         this.speed = -4 * this.speed;
+    }
+
+    public void Initialize()
+    {
+        this.speed = defaultSpeed;
     }
 
     public void DestroyPool()

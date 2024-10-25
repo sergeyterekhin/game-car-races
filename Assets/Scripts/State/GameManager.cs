@@ -11,13 +11,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string startTheme;
     [SerializeField] private GameObject GameOverCanvas;
 
-    void Awake()
+    public static Coroutine showDieScreenBlock = null;
+    
+    public static bool CanRestartGame
+    {
+       get{
+            return showDieScreenBlock == null;
+       }
+    }
+
+    void Start()
     {
         GameStore.getInstance().Theme.InitSprites(SpriteThemeFolderName);
-        GameStore.getInstance().DieScreen = GameOverCanvas;
         ChangeTheme(startTheme);
         StartCoroutine(ChangleGlobalSpeed());
-        EventManager.MainPlayerDied += ShowDieScreen;
+        EventManager.GameOver += ShowDieScreen;
+        EventManager.RestartGame += HideDieScreen;
     }
 
     public static void ChangeTheme(string themeName=null)
@@ -35,22 +44,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void ShowDieScreen()
+    private void ShowDieScreen()
     {
-        GameObject canvas = GameStore.getInstance().DieScreen;
-        RectTransform posCanvas = canvas.GetComponent<RectTransform>();
+        if (showDieScreenBlock!=null) StopCoroutine(showDieScreenBlock);
+        RectTransform posCanvas = GameOverCanvas.GetComponent<RectTransform>();
         posCanvas.localPosition =new Vector3(0f,400f);
-        canvas.SetActive(true);
-        MonoBehaviour mono = FindObjectOfType<MonoBehaviour>();
-        mono.StartCoroutine(DropUIObject(Vector3.zero, posCanvas));
+        GameOverCanvas.SetActive(true);
+        showDieScreenBlock = StartCoroutine(DropUIObject(Vector3.zero, posCanvas));
     }
 
-    public static IEnumerator DropUIObject(Vector3 toPosition, RectTransform objectMoved)
+    private void HideDieScreen()
+    {
+        if (showDieScreenBlock != null) StopCoroutine(showDieScreenBlock);
+        GameOverCanvas.SetActive(false);
+    }
+
+    public IEnumerator DropUIObject(Vector3 toPosition, RectTransform objectMoved)
     {
         while (objectMoved.localPosition!=toPosition)
         {
             objectMoved.localPosition = Vector3.MoveTowards(objectMoved.localPosition, toPosition, 25f);
+            Debug.Log("working...");
             yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForSeconds(1.5f);
+        showDieScreenBlock = null;
     }
 }

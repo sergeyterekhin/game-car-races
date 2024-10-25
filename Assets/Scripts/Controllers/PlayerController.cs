@@ -33,21 +33,22 @@ public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
     public void Die() {
         effects.crash.Play();
         animationPlayer.SetBool("isDied", true);
-        //ParticleSystem smokeEffect = gameObject.GetComponentsInChildren<ParticleSystem>().FirstOrDefault(psEl=>psEl.name=="effectDie");
         effects.smokeEngine.Play();
 
         soundSourse.loop = false;
         soundSourse.clip = sound.die;
         soundSourse.Play();
-        
+
         rb.bodyType = RigidbodyType2D.Static;
-        
-        EventManager.OnPlayerDie();
     }
 
     private void initializePlayer()
     {
+        this.transform.position = new Vector3(this.transform.position.x, -6f);
+        rb.bodyType = RigidbodyType2D.Dynamic;
         soundSourse.loop = true;
+        effects.smokeEngine.Clear();
+        effects.smokeEngine.Stop();
         soundSourse.clip = sound.drive;
         soundSourse.Play();
         animationPlayer.SetBool("isDied",false);
@@ -55,8 +56,9 @@ public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
 
     public void Damage(float value)
     {
+        if (GameStore.getInstance().stateMainPlayer!=GameState.Life) return;
         health -= value;
-        if (this.health <= 0f) Die();
+        if (this.health <= 0f) EventManager.onGameOver();
     }
 
     public void SetBonus(IEnumerator action)
@@ -72,11 +74,22 @@ public class PlayerController : MonoBehaviour, ICanGrapBonus, IDamageable
         this.soundSourse = this.GetComponent<AudioSource>();
         this.ActiveBonusesTimer = new();
         this.initializePlayer();
+        EventManager.GameOver += Die;
+        EventManager.RestartGame += initializePlayer;
     }
 
     void FixedUpdate()
     {
-        if (Input.GetAxisRaw("Space") != 0f) rb.AddForce(new Vector2(0, Input.GetAxisRaw("Space") * speed * 10f));
-        else rb.AddForce(new Vector2(0, -1 * speed * 10f));
+        switch (GameStore.getInstance().stateMainPlayer)
+        {
+            case GameState.Life:
+                if (Input.GetAxisRaw("Space") != 0f) rb.AddForce(new Vector2(0, Input.GetAxisRaw("Space") * speed * 10f));
+                else rb.AddForce(new Vector2(0, -1 * speed * 10f));
+            break;
+
+            case GameState.Died:
+                if (Input.GetAxisRaw("Space") != 0f && GameManager.CanRestartGame) EventManager.onRestartGame();
+            break;
+        }
     }
 }
